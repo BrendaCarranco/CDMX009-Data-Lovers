@@ -1,13 +1,34 @@
-// import data from './data/injuries/injuries.js';
-// import data from './data/lol/lol.js';
-// import data from './data/patient/patient.js';
-// import data from './data/pokemon/pokemon.js';
-// import data from './data/rickandmorty/rickandmorty.js';
-// import data from './data/steam/steam.js';
-// import data from './data/steam/worldbank.js';
+import injuries from './data/injuries/injuries.js';
 
-// esta es una función de ejemplo
+let database = injuries             //Declarando mi base en una variable
 
-export const example = () => {
-  return 'example';
-};
+export const datos = (database)     
+
+let car = database.map(function(carr) {                         //Variable para buscar personas heridas x carro
+return carr.Total_Injured_Persons_Passenger_Car_Occupants;
+});
+console.log(car)                                                //Imprimiendo personas heridas
+
+/////////////////////////////////////////////////
+
+let years  = database 
+    .filter(function(yearsF) {
+        return yearsF.Year === '2016-01-04';
+    });
+console.log(years)
+
+//////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+//export const injuries = () => {
+//  console.log(data);
+//};
+
