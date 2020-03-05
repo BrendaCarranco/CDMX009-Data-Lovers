@@ -13,9 +13,16 @@ console.log(car)                                                //Imprimiendo pe
 
 let years  = database 
     .filter(function(yearsF) {
-        return yearsF.Year === '2016-01-04';
+        return yearsF.Year === '2013-01-04';
     });
 console.log(years)
+
+/* let carrito = database
+    .filter (function(carritos){
+        return carritos.Total_Injured_Persons_Passenger_Car_Occupants;
+    });
+    console.log(carrito) /////////// me da todos los años con datos de carro
+ */
 
 //////////////////////////////////////////////////////////////
 
@@ -31,4 +38,12 @@ console.log(years)
 //export const injuries = () => {
 //  console.log(data);
 //};
+
+let graficas = (document.getElementById('linear'));
+    graficas.onclick = function () {
+        let fromm = document.getElementById('fromm').value;
+        let too = document.getElementById('too').value;
+    console.log(fromm,too)
+    }
+
 
