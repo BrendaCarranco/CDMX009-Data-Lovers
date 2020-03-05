@@ -26,7 +26,8 @@
       <title>Data Lovers</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  
+      <script src = 'https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js'></script>
+
       <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet"> 
       <!-- GRAFICA DE PIE 3D -->
       <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -35,9 +36,8 @@
     </head>
     <body>
 
-
       <!-- PRIMERA HOJA -->
-    <section class="index">
+    <section class="inicio" id="pag1">
       <header>
       <img src="imgs/LogoP2_1.png" class="indexheader">
     </header>
@@ -103,7 +103,7 @@
     </label>
 
     <footer>
-      <a href="#index"><img src="imgs/LogoP2_1.png" class="footer" alt="Logotipo"></a>
+      <a href="#inicio"><img src="imgs/LogoP2_1.png" class="footer" alt="Logotipo"></a>
     </footer>
   </div>
 </section>
@@ -123,17 +123,17 @@
   </div>
 
   <div class="iconGrid" id="icons">
-    <a href="#graficas"><img src="imgs/tractor.svg" id="train" class="iconSelect" alt="Tren"></a>
-    <a href="#graficas"><img src="imgs/furgoneta.svg" id="bus" class="iconSelect" alt="Autobus"></a>
-    <a href="#graficas"><img src="imgs/camion.svg" id="camion" class="iconSelect" alt="Camión"></a>
-    <a href="#graficas"><img src="imgs/coche.svg" id="car" class="iconSelect" alt="Automovil"></a>
-    <a href="#graficas"><img src="imgs/moto.svg" id="motor" class="iconSelect" alt="Motocicleta"></a>
-    <a href="#graficas"><img src="imgs/aeroplano.svg" id="plane" class="iconSelect" alt="Avión"></a>
-    <a href="#graficas"><img src="imgs/enviar.svg" id="ship" class="iconSelect" alt="Barco"></a>
+    <a href="#graficas"><img src="imgs/tractor.svg" id="train" class="iconSelect" alt="tren"></a>
+    <a href="#graficas"><img src="imgs/furgoneta.svg" id="bus" class="iconSelect" alt="tutobus"></a>
+    <a href="#graficas"><img src="imgs/camion.svg" id="camion" class="iconSelect" alt="camiónn"></a>
+    <a href="#graficas"><img src="imgs/coche.svg" id="car" class="iconSelect" alt="automovil"></a>
+    <a href="#graficas"><img src="imgs/moto.svg" id="motor" class="iconSelect" alt="motocicleta"></a>
+    <a href="#graficas"><img src="imgs/aeroplano.svg" id="plane" class="iconSelect" alt="avión"></a>
+    <a href="#graficas"><img src="imgs/enviar.svg" id="ship" class="iconSelect" alt="barco"></a>
   </div>
 
   <footer>
-    <a href="#index"><img src="imgs/LogoP2_1.png" class="footer" alt="Logotipo"></a>
+    <a href="#pag1"><img src="imgs/LogoP2_1.png" class="footer" alt="Logotipo"></a>
   </footer>
 </section>
 
@@ -144,8 +144,8 @@
 
 <section class="pag5" id="graficas">
   <header>
-    <a href="#entrada">Regresar</a>
-    <p class="iconSelected">AQUI VA LA IMAGEN QUE SELECCIONO EL USUARIO</p>
+    <p><a href="#entrada">Regresar</a>
+    <p class="iconSelected" id="imgSelect">Icono select</p>
   </header>
 
 
@@ -156,7 +156,7 @@
   </div>
 
   <div class="select">
-    <select class="from" id=fromm>
+    <p>Intervalo:  <select class="from" id=fromm>
       <option>1960</option>
       <option>1965</option>
       <option>1970</option>
@@ -226,7 +226,222 @@
         <option>2014</option>
         <option>2015</option>
         <option>2016</option>
-      </select>
+      </select></p>
+  </div>
+
+  <br>
+
+  <div id="graficas">
+    <p id="holabus">HOOOOLA</p>
+
+    <div id="chart_div" style="width: 700px; height: 300px;"></div>
+
+    <br>
+
+    <div id="piechart_3d" style="width: 800px; height: 400px;"></div>
+
+    <footer>
+      <a href="#pag1"><img src="imgs/LogoP2_1.png" width="75px" alt="Logotipo"></a>
+    </footer>
+
+  </div>
+
+
+</section>
+
+<!-- Tablas -->
+
+<section class="pag6" id="tables">
+  <header>
+    <a href="#entrada">Regresar</a>
+    <p class="iconSelected">AQUI VA LA IMAGEN QUE SELECCIONO EL USUARIO</p>
+  </header>
+
+
+  <div class="botonesF">
+    <a href="#graficas"><input type="button" value="Graficas" class="btn" id="linear"></a>
+    <a href="#tabla"><input type="button" value="Tabla" class="btn" id="table" ></a>
+    <a href="#Mapa"><input type="button" value="Mapa" class="btn" id="map"></a>
+  </div>
+
+  <div class="select">
+    <p>Intervalo:  <select class="from" id=fromm>
+      <option>1960</option>
+      <option>1965</option>
+      <option>1970</option>
+      <option>1975</option>
+      <option>1980</option>
+      <option>1985</option>
+      <option>1990</option>
+      <option>1991</option>
+      <option>1992</option>
+      <option>1993</option>
+      <option>1994</option>
+      <option>1995</option>
+      <option>1996</option>
+      <option>1997</option>
+      <option>1998</option>
+      <option>1999</option>
+      <option>2000</option>
+      <option>2001</option>
+      <option>2002</option>
+      <option>2003</option>
+      <option>2004</option>
+      <option>2005</option>
+      <option>2006</option>
+      <option>2007</option>
+      <option>2008</option>
+      <option>2009</option>
+      <option>2010</option>
+      <option>2011</option>
+      <option>2012</option>
+      <option>2013</option>
+      <option>2014</option>
+      <option>2015</option>
+      <option>2016</option>
+    </select>
+
+      <select class="to" id="too">
+        <option>1960</option>
+        <option>1965</option>
+        <option>1970</option>
+        <option>1975</option>
+        <option>1980</option>
+        <option>1985</option>
+        <option>1990</option>
+        <option>1991</option>
+        <option>1992</option>
+        <option>1993</option>
+        <option>1994</option>
+        <option>1995</option>
+        <option>1996</option>
+        <option>1997</option>
+        <option>1998</option>
+        <option>1999</option>
+        <option>2000</option>
+        <option>2001</option>
+        <option>2002</option>
+        <option>2003</option>
+        <option>2004</option>
+        <option>2005</option>
+        <option>2006</option>
+        <option>2007</option>
+        <option>2008</option>
+        <option>2009</option>
+        <option>2010</option>
+        <option>2011</option>
+        <option>2012</option>
+        <option>2013</option>
+        <option>2014</option>
+        <option>2015</option>
+        <option>2016</option>
+      </select></p>
+  </div>
+
+  <br>
+
+  <div id="graficas"> <!-- ///////////////////IDK -->
+
+    <div id="chart_div" style="width: 700px; height: 300px;"></div>
+
+    <br>
+
+    <div id="piechart_3d" style="width: 800px; height: 400px;"></div>
+
+    <footer>
+      <a href="#pag1"><img src="imgs/LogoP2_1.png" width="75px" alt="Logotipo"></a>
+    </footer>
+
+  </div>
+
+
+<!-- Mapas -->
+
+<section class="pag7" id="maps">
+  <header>
+    <a href="#entrada">Regresar</a>
+    <p class="iconSelected">AQUI VA LA IMAGEN QUE SELECCIONO EL USUARIO</p>
+  </header>
+
+
+  <div class="botonesF">
+    <a href="#graficas"><input type="button" value="Graficas" class="btn" id="linear"></a>
+    <a href="#tabla"><input type="button" value="Tabla" class="btn" id="table" ></a>
+    <a href="#Mapa"><input type="button" value="Mapa" class="btn" id="map"></a>
+  </div>
+
+  <div class="select">
+    <p>Intervalo:  <select class="from" id=fromm>
+      <option>1960</option>
+      <option>1965</option>
+      <option>1970</option>
+      <option>1975</option>
+      <option>1980</option>
+      <option>1985</option>
+      <option>1990</option>
+      <option>1991</option>
+      <option>1992</option>
+      <option>1993</option>
+      <option>1994</option>
+      <option>1995</option>
+      <option>1996</option>
+      <option>1997</option>
+      <option>1998</option>
+      <option>1999</option>
+      <option>2000</option>
+      <option>2001</option>
+      <option>2002</option>
+      <option>2003</option>
+      <option>2004</option>
+      <option>2005</option>
+      <option>2006</option>
+      <option>2007</option>
+      <option>2008</option>
+      <option>2009</option>
+      <option>2010</option>
+      <option>2011</option>
+      <option>2012</option>
+      <option>2013</option>
+      <option>2014</option>
+      <option>2015</option>
+      <option>2016</option>
+    </select>
+
+      <select class="to" id="too">
+        <option>1960</option>
+        <option>1965</option>
+        <option>1970</option>
+        <option>1975</option>
+        <option>1980</option>
+        <option>1985</option>
+        <option>1990</option>
+        <option>1991</option>
+        <option>1992</option>
+        <option>1993</option>
+        <option>1994</option>
+        <option>1995</option>
+        <option>1996</option>
+        <option>1997</option>
+        <option>1998</option>
+        <option>1999</option>
+        <option>2000</option>
+        <option>2001</option>
+        <option>2002</option>
+        <option>2003</option>
+        <option>2004</option>
+        <option>2005</option>
+        <option>2006</option>
+        <option>2007</option>
+        <option>2008</option>
+        <option>2009</option>
+        <option>2010</option>
+        <option>2011</option>
+        <option>2012</option>
+        <option>2013</option>
+        <option>2014</option>
+        <option>2015</option>
+        <option>2016</option>
+      </select></p>
   </div>
 
   <br>
@@ -240,11 +455,13 @@
     <div id="piechart_3d" style="width: 800px; height: 400px;"></div>
 
     <footer>
-      <a href="#inicio"><img src="imgs/LogoP2_1.png" width="75px" alt="Logotipo"></a>
+      <a href="#pag1"><img src="imgs/LogoP2_1.png" width="75px" alt="Logotipo"></a>
     </footer>
 
   </div>
 
+
+</section>
 
 </section>
 
