@@ -87,8 +87,8 @@ google.setOnLoadCallback(drawChart);
 function drawChart() {
   let datos = google.visualization.arrayToDataTable([    
     ['AÑO', 'Heridos'], 
-    [list, heridos] 
-    /* ['2000',  57723],
+/*     [años, heridos] */
+    ['2000',  57723],
     ['2001',  60236],
     ['2002',  64713],
     ['2003',  67103],
@@ -98,7 +98,7 @@ function drawChart() {
     ['2007',  102994],
     ['2008',  95986], 
     ['2009',  90000],
-    ['2010',  82000]   */ 
+    ['2010',  82000]   
   ]); 
 
  
@@ -128,9 +128,9 @@ google.charts.load('current', {'packages':['table']});
         data.addColumn('string', 'Años');
         data.addColumn('number', 'Heridos');
         data.addRows([
-          [años, heridos], 
+          /* [años, heridos], */
 
-          /* ['2000',  57723],
+          ['2000',  57723],
           ['2001',  60236],
           ['2002',  64713],
           ['2003',  67103],
@@ -140,7 +140,7 @@ google.charts.load('current', {'packages':['table']});
           ['2007',  102994],
           ['2008',  95986], 
           ['2009',  90000],
-          ['2010',  82000] */
+          ['2010',  82000]
         ]);
 
         
