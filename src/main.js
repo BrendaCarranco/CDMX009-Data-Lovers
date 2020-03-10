@@ -1,4 +1,26 @@
-import { example } from './data.js';
+import { accDatos } from './data.js';
 
-console.log(example);
+
+
+
+
+
+
+console.log(accDatos());
+/* Ocultar y mostrar páginas */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
