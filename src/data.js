@@ -31,11 +31,11 @@ function setSelectedImage(e) {                          //Función para imprimir
     medio = img.id
 }
 
-function recorreIcons(icon) {               
+function recorreIcons(icon) {
     icon.onclick = setSelectedImage
 }
 
-icons.forEach(recorreIcons)           
+icons.forEach(recorreIcons)
 
 function doFilter() {                       //Función para filtrar mis datos
 
@@ -47,7 +47,7 @@ function doFilter() {                       //Función para filtrar mis datos
         }
         if (obj.num && fromYear <= obj.year && obj.year <= toYear) array.push(obj)
     })
-    list = array                        
+    list = array
     console.log(list)
 
 
@@ -59,6 +59,8 @@ function doFilter() {                       //Función para filtrar mis datos
         console.log(newArre);
     };
 };
+
+
 
 
 
