@@ -24,7 +24,6 @@ graficas.onclick = function (x) {
 
 let icons = document.querySelectorAll('.iconSelect')   // Declarando todos mis botones en una variable.
 
-
 function setSelectedImage(e) {                          //Función para imprimir la imagen del medio seleccionado en mi html.
     let img = e.target
     document.getElementById('imgSelect').innerHTML = `<img src="${img.src}" />`
@@ -122,7 +121,19 @@ google.charts.load('current', {'packages':['table']});
         var table = new google.visualization.Table(document.getElementById('table_div'));
 
         table.draw(data, {showRowNumber: true, width: '50%', height: '50%'});
-      };
+
+        let options = {
+          title: medio,
+          vAxis: {title: 'Heridos'},
+          hAxis: {title: 'Años'},
+          
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+
+        chart.draw(data, options);
+      }; 
 
 
 
@@ -130,5 +141,3 @@ google.charts.load('current', {'packages':['table']});
 
 
 // Ya no pudimos imprimir los datos en el chart, si en consola, no en el chart :( 
-
-   
