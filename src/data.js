@@ -62,10 +62,11 @@ function doFilter() {                       //Función para filtrar mis datos
 
 ////////////////////
 
-google.load("visualization", "1", {packages:["corechart"]});
-google.setOnLoadCallback(drawChart);
-function drawChart() {
-  let datos = google.visualization.arrayToDataTable([    
+google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([  
     ['AÑOS', 'Heridos'],
     /*  [dataFinal, dataFinal] */
 
@@ -83,21 +84,17 @@ function drawChart() {
   ]); 
 
  
-  let options = {
-    title: medio,
-    vAxis: {title: 'Heridos'},
-    hAxis: {title: 'Años'},
-    
-    is3D: true,
+  var options = {
+    title: 'Company Performance',
+    curveType: 'function',
+    legend: { position: 'bottom' }
   };
 
-  let chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-  chart.draw(datos, options);
+  var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
 
-  let chart3d = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-  chart3d.draw(datos, options);
-
-} //DRAWCHART
+  chart.draw(data, options);
+}
+ //DRAWCHART
 
 google.charts.load('current', {'packages':['table']});
       google.charts.setOnLoadCallback(drawTable);
@@ -124,7 +121,7 @@ google.charts.load('current', {'packages':['table']});
 
         var table = new google.visualization.Table(document.getElementById('table_div'));
 
-        table.draw(data, {showRowNumber: true, width: '20%', height: '100%'});
+        table.draw(data, {showRowNumber: true, width: '50%', height: '50%'});
       };
 
 
@@ -134,46 +131,4 @@ google.charts.load('current', {'packages':['table']});
 
 // Ya no pudimos imprimir los datos en el chart, si en consola, no en el chart :( 
 
-   ////////////////////////////////EJEMPLO CHART GOOGLE/////////////////////////////7
-
-
-
-/* // Load the Visualization API and the corechart package.
-google.charts.load('current', {'packages':['corechart']});
-
-// Set a callback to run when the Google Visualization API is loaded.
-google.charts.setOnLoadCallback(drawChart);
-
-// Callback that creates and populates a data table,
-// instantiates the pie chart, passes in the data and
-// draws it.
-function drawChart() {
-
-  // Create the data table.
-  var data = google.visualization.arrayToDataTable([
-    ['Dinosaur', 'Length'],
-    ['Acrocanthosaurus (top-spined lizard)', 12.2],
-    ['Albertosaurus (Alberta lizard)', 9.1],
-    ['Allosaurus (other lizard)', 12.2],
-    ['Apatosaurus (deceptive lizard)', 22.9],
-    ['Archaeopteryx (ancient wing)', 0.9],
-    ['Sauronithoides (narrow-clawed lizard)', 2.0],
-    ['Seismosaurus (tremor lizard)', 45.7],
-    ['Spinosaurus (spiny lizard)', 12.2],
-    ['Supersaurus (super lizard)', 30.5],
-    ['Tyrannosaurus (tyrant lizard)', 15.2],
-    ['Ultrasaurus (ultra lizard)', 30.5],
-    ['Velociraptor (swift robber)', 1.8]]);
-    console.log(data)
-  // Set chart options
-  var options = {'title':'How Much Pizza I Ate Last Night',
-                 'width':400,
-                 'height':300};
-
-  // Instantiate and draw our chart, passing in some options.
-  var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-  chart.draw(data, options);
-}
- */
-
-
+   
