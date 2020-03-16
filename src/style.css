@@ -65,12 +65,15 @@ h2 {
 .container {
   font-family: 'Roboto';
   font-style: italic;
-  border: none;
+ 
   box-sizing: border-box;
-  border-radius: 50px;
+  border-radius: 20px;
   background: rgba(27, 26, 25, 0.09);
   width: 303px;
   height: 52px;
+  font-size: medium;
+  padding-left: 25px;
+  color: rgb(50, 50, 50);
 }
 
 .sesion {
@@ -238,6 +241,8 @@ h2 {
 #tabla {
   margin: 50px auto;
 }
+
+
 
 
 

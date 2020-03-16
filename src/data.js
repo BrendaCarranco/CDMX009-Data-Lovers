@@ -1,26 +1,31 @@
 import data from './data/injuries/injuries.js';
 
 //DECLARANDO VARIABLES GLOBALES
+let img;
 let medio;
 let fromYear;
 let toYear;
-let list;
+let list = [];
 let icons = document.querySelectorAll('.iconSelect');
 let años = [];
 let heridos = [];
 let dataFinal = [];
+let obj;
+let array = [];
 
 export const accDatos = () => {
   
   let database = data   //ASIGNANDO A UNA VARIBLE LA BASE DE DATOS
   
-//FUNCIONES PARA RECORRER Y SELECCIONAR EL ICONO DEL MEDIO.
+//FUNCIONES PARA RECORRER Y SELECCIONAR EL ICONO DEL MEDIO DE TRANSPORTE.
   function setSelectedImage(e) {
-    let img = e.target;
+    img = e.target;
 
     document.getElementById('imgSelect').innerHTML = `<img src="${img.src}"/>`;       
     medio = img.id;
     document.getElementById('descMedio').innerHTML = medio;
+    document.getElementById('imgSelectTabla').innerHTML = `<img src="${img.src}"/>`; 
+    document.getElementById('descMedioTabla').innerHTML = medio;    
     
     console.log(medio)
   };
@@ -30,8 +35,10 @@ export const accDatos = () => {
   };
 
   //console.log(icons);
+  
 
   icons.forEach(recorreIcons); 
+
 
   //-------------------GRAFCAS-----------------//
   //OBTENIENDO EL INTERVALO PARA LAS GRAFICAS Y LA TABLA
@@ -56,10 +63,9 @@ export const accDatos = () => {
   };
 
   //FUNCION PARA OBTENER EL INTERVALO.
-  function doFilter() {
-    let array = [];
+  function doFilter() {    
     database.map(item => {
-      let obj = {
+      obj = {
         year : parseInt(item.Year.split('_')[0]),
         num : item[medio]
       };
@@ -67,62 +73,87 @@ export const accDatos = () => {
         array.push(obj);
         };
         return array;
-     });
-
-    list = array; //ESTO ES UN ARRAY DE OBJETOS
-    console.log(list);   
+         
+    });
+     list = array; //ESTO ES UN ARRAY DE OBJETOS
+     //console.log(list);      
 
  //CICLO PARA OBTENER LOS DATOS PARA GRAFICAR
-
     for(let i = 0; i < list.length; i++) {
       años = (list[i].year).toString();
       heridos = list[i].num;
 
-      dataFinal.push([años, heridos])     
+      dataFinal.push([años, heridos]);  
+      console.log([años, heridos])   
+        
+    //console.log(dataFinal);   //ES UN ARRAY DE ARRAYS  
 
+/************ DESPLEGAR GRAFICAS Y TABLA******************/
+google.load("visualization", "1", {packages:["corechart"]});
+google.setOnLoadCallback(drawChart);
+function drawChart() {
+  let datos = google.visualization.arrayToDataTable([    
+    ['AÑO', 'Heridos'],
+    [años.toString(), heridos]
+    /* ['2000',  57723],
+    ['2001',  60236],
+    ['2002',  64713],
+    ['2003',  67103],
+    ['2004',  76379],
+    ['2005',  87335],
+    ['2006',  88652],
+    ['2007',  102994],
+    ['2008',  95986], 
+    ['2009',  90000],
+    ['2010',  82000]     */
+  ]); 
+ 
+  let options = {
+    title: medio,
+    vAxis: {title: 'Heridos'},
+    hAxis: {title: 'Años'},
     
-    console.log([años, heridos])    
+    is3D: true,
+  };
 
-    };
+  let chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+  chart.draw(datos, options);
 
-    console.log(dataFinal)    
+  let chart3d = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+  chart3d.draw(datos, options);
 
+} //DRAWCHART
+
+google.charts.load('current', {packages:['table']});
+      google.charts.setOnLoadCallback(drawTable);
+      function drawTable() {
+        let datos= new google.visualization.DataTable();
+        datos.addColumn('string', 'Años');
+        datos.addColumn('number', 'Heridos');
+        datos.addRows([
+          [años.toString(), heridos] 
+          /* ['2000',  57723],
+          ['2001',  60236],
+          ['2002',  64713],
+          ['2003',  67103],
+          ['2004',  76379],
+          ['2005',  87335],
+          ['2006',  88652],
+          ['2007',  102994],
+          ['2008',  95986], 
+          ['2009',  90000],
+          ['2010',  82000] */ 
+        ]);
+        
+        let table = new google.visualization.Table(document.getElementById('table_div'));
+
+        table.draw(datos, {showRowNumber: true, width: '20%', height: '100%'});
+      };        
+
+    }; //CICLO FOR
 return accDatos;
 
-};
-};
+}; //doFilter 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
+}; //ESTA ES DE const accDatos
 

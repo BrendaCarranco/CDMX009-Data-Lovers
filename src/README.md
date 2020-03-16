@@ -69,4 +69,4 @@ Historia 2: Yo como aseguradora quiero conocer el medio de transporte que tiene 
 
 ### Pruebas unitarias
 
-NO LA HICIMOS.
+NO LAS HICIMOS.
