@@ -60,13 +60,12 @@ Historia 2: Yo como aseguradora quiero conocer el medio de transporte que tiene 
 
 #### Prototipo de baja fidelidad
 
-<img src=https://github.com/BrendaCarranco/CDMX009-Data-Lovers/tree/master/src/imgs/Primer_Prototipo.jpeg
+<img src= "imgs/Primer_Prototipo.jpeg">
 
 #### Prototipo de alta fidelidad
 
-<img src=https://github.com/BrendaCarranco/CDMX009-Data-Lovers/tree/master/src/imgs/Prototipo_Final.jpeg
-
+<img src="imgs/DataLoversFinal.png">
 
 ### Pruebas unitarias
 
-NO LA HICIMOS.
+NO LAS HICIMOS.
