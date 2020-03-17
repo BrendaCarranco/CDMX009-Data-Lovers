@@ -60,11 +60,11 @@ Historia 2: Yo como aseguradora quiero conocer el medio de transporte que tiene 
 
 #### Prototipo de baja fidelidad
 
-<img src= 'src/imgs/Primer_Prototipo.jpeg'>
+<img src= "imgs/Primer_Prototipo.jpeg">
 
 #### Prototipo de alta fidelidad
 
-<img src='src/imgs/DataLoversFinal.png'>
+<img src="imgs/DataLoversFinal.png">
 
 ### Pruebas unitarias
 
