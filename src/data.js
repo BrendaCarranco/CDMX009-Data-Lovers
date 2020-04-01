@@ -1,52 +1,50 @@
 import data from './data/injuries/injuries.js';
 
-//DECLARANDO VARIABLES GLOBALES
+/* Variables globales */
 let img;
 let medio;
 let fromYear;
 let toYear;
 let list = [];
-let icons = document.querySelectorAll('.iconSelect');
-let años = [];
-let heridos = [];
-let dataFinal = [];
-let obj;
-let array = [];
+let yearList = [];
+let injuriedList = [];
+const dataFinal = [];
+/* dataFinal[0] = ['año', 'heridos']
+ */let obj;
+const array = [];
 
 export const accDatos = () => {
-  
-  let database = data   //ASIGNANDO A UNA VARIBLE LA BASE DE DATOS
-  
-//FUNCIONES PARA RECORRER Y SELECCIONAR EL ICONO DEL MEDIO DE TRANSPORTE.
+
+  /* Funciones para recorrer y seleccionar el ícono del medio de transporte */
   function setSelectedImage(e) {
     img = e.target;
 
-    document.getElementById('imgSelect').innerHTML = `<img src="${img.src}"/>`;       
+    document.getElementById('imgSelect').innerHTML = `<img src="${img.src}"/>`;
     medio = img.id;
     document.getElementById('descMedio').innerHTML = medio;
-    document.getElementById('imgSelectTabla').innerHTML = `<img src="${img.src}"/>`; 
-    document.getElementById('descMedioTabla').innerHTML = medio;    
-    
-    console.log(medio)
-  };
-  
+  }
+
   function recorreIcons(icon) {
-    icon.onclick = setSelectedImage;    
+    icon.onclick = setSelectedImage;
+  }
+
+  const icons = document.querySelectorAll('.iconSelect');
+  icons.forEach(recorreIcons);
+
+  /*Obteniendo el intervalo de los años seleccionados*/
+  const graphs = document.getElementById('linear');
+  const table = document.getElementById('tableChart');
+
+  /* Desplegar gŕaficas y tabla al click llamando la función */
+  graphs.onclick = function () {
+    const fromm = document.getElementById('fromm').value;
+    const too = document.getElementById('too').value;
+    fromYear = fromm;
+    toYear = too;
+    doFilter();
   };
 
-  //console.log(icons);
-  
-
-  icons.forEach(recorreIcons); 
-
-
-  //-------------------GRAFCAS-----------------//
-  //OBTENIENDO EL INTERVALO PARA LAS GRAFICAS Y LA TABLA
-  let graficas = document.getElementById('linear'); 
-  let table = document.getElementById('tablita') ;
-
-  //FUNCION PARA DESPLEGAR LA GRAFICA AL HACER CLICK EN GRAFICAS O TABLA Y LLAMANDO A LA FUNCION doFilter()
-  graficas.onclick = function(x) {
+  table.onclick = function () {
     let fromm = document.getElementById('fromm').value;
     let too = document.getElementById('too').value;
     fromYear = fromm;
@@ -54,106 +52,93 @@ export const accDatos = () => {
     doFilter();
   };
 
-  table.onclick = function(x) {
-    let fromm = document.getElementById('fromm').value;
-    let too = document.getElementById('too').value;
-    fromYear = fromm;
-    toYear = too;
-    doFilter();
-  };
-
-  //FUNCION PARA OBTENER EL INTERVALO.
-  function doFilter() {    
-    database.map(item => {
+  /* Función para obtener el array con los datos por año */
+  function doFilter() {
+    data.map(item => {
       obj = {
-        year : parseInt(item.Year.split('_')[0]),
-        num : item[medio]
+        year: parseInt(item.Year.split('_')[0]),
+        num: item[medio]
       };
-      if(fromYear <= obj.year && obj.year <= toYear) { 
+      if (fromYear <= obj.year && obj.year <= toYear) {
         array.push(obj);
-        };
-        return array;
-         
+  /*    console.log([array.year,array.num]) 23 marzo*/
+      };
+      return array;
     });
-     list = array; //ESTO ES UN ARRAY DE OBJETOS
-     //console.log(list);      
+    list = array; /* Array de objetos */
+    console.log(list);
 
- //CICLO PARA OBTENER LOS DATOS PARA GRAFICAR
-    for(let i = 0; i < list.length; i++) {
-      años = (list[i].year).toString();
-      heridos = list[i].num;
 
-      dataFinal.push([años, heridos]);  
-      console.log([años, heridos])   
-        
-    //console.log(dataFinal);   //ES UN ARRAY DE ARRAYS  
+  /* Ciclo for para obtener los datos a graficar */
+    for (let i = 0; i < list.length; i++) {
+      yearList = (list[i].year)/* .toString() */;
+      injuriedList = list[i].num;
 
-/************ DESPLEGAR GRAFICAS Y TABLA******************/
-google.load("visualization", "1", {packages:["corechart"]});
-google.setOnLoadCallback(drawChart);
-function drawChart() {
-  let datos = google.visualization.arrayToDataTable([    
-    ['AÑO', 'Heridos'],
-    [años.toString(), heridos]
-    /* ['2000',  57723],
-    ['2001',  60236],
-    ['2002',  64713],
-    ['2003',  67103],
-    ['2004',  76379],
-    ['2005',  87335],
-    ['2006',  88652],
-    ['2007',  102994],
-    ['2008',  95986], 
-    ['2009',  90000],
-    ['2010',  82000]     */
-  ]); 
- 
-  let options = {
-    title: medio,
-    vAxis: {title: 'Heridos'},
-    hAxis: {title: 'Años'},
-    
-    is3D: true,
-  };
+      dataFinal.push([parseInt(yearList), injuriedList]);
+          console.log("yearList",[yearList, injuriedList])  
+      
+      console.log("dataFinal", dataFinal);   /* Array de arrays  */}
 
-  let chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-  chart.draw(datos, options);
+  /* Deplegar la gráfica */
+      google.load("visualization", "1", { packages: ["corechart"] });
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        let dataChart = google.visualization.arrayToDataTable([
 
-  let chart3d = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-  chart3d.draw(datos, options);
+          // dataFinal
+          /* grafica ejemplo */
+          ['AÑO', 'heridos'],
+          ['2000', 57723],
+          ['2001', 60236],
+          ['2002', 64713],
+          ['2003', 67103],
+          ['2009', 90000],
+          ['2010', 82000] 
+        ]);
 
-} //DRAWCHART
+        let options = {
+          title: medio,
+          vAxis: { title: 'Heridos' },
+          hAxis: { title: 'Años' },
 
-google.charts.load('current', {packages:['table']});
+          is3D: true,
+        };
+
+        let chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(dataChart, options);
+
+      }
+
+  /* Tabla */
+
+  google.charts.load('current', { packages: ['table'] });
       google.charts.setOnLoadCallback(drawTable);
       function drawTable() {
-        let datos= new google.visualization.DataTable();
-        datos.addColumn('string', 'Años');
-        datos.addColumn('number', 'Heridos');
-        datos.addRows([
-          [años.toString(), heridos] 
-          /* ['2000',  57723],
+        let dataChart = new google.visualization.DataTable();
+        dataChart.addColumn('string', 'Años');
+        dataChart.addColumn('number', 'Heridos');
+        dataChart.addRows([
+          [yearList.toString(), injuriedList] 
+         /*  ['2000',  57723],
           ['2001',  60236],
           ['2002',  64713],
           ['2003',  67103],
-          ['2004',  76379],
-          ['2005',  87335],
-          ['2006',  88652],
           ['2007',  102994],
           ['2008',  95986], 
           ['2009',  90000],
-          ['2010',  82000] */ 
+          ['2010',  82000]  */
         ]);
-        
-        let table = new google.visualization.Table(document.getElementById('table_div'));
 
-        table.draw(datos, {showRowNumber: true, width: '20%', height: '100%'});
-      };        
+        let table = new google.visualization.Table(document.getElementById('table'));
 
-    }; //CICLO FOR
-return accDatos;
+        table.draw(dataChart, { showRowNumber: true});
+      };
 
-}; //doFilter 
 
-}; //ESTA ES DE const accDatos
 
+    
+    return accDatos;
+
+  };
+
+};

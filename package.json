@@ -25,5 +25,19 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^22.19.0"
-  }
+  },
+  "description": "* [Personas heridas por medio de transporte en EEUU](src/data/injuries/injuries.json).   Este set nos muestra el número de personas heridas en accidentes de   transporte, con data anual desde 1960 y categorizada por tipo de transporte   (aire, barco, automóvil, moto, bicicleta, ...).",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrendaCarranco/CDMX009-Data-Lovers.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/BrendaCarranco/CDMX009-Data-Lovers/issues"
+  },
+  "homepage": "https://github.com/BrendaCarranco/CDMX009-Data-Lovers#readme"
 }

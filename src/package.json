@@ -1,0 +1,11 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": "* [Personas heridas por medio de transporte en EEUU](src/data/injuries/injuries.json).   Este set nos muestra el número de personas heridas en accidentes de   transporte, con data anual desde 1960 y categorizada por tipo de transporte   (aire, barco, automóvil, moto, bicicleta, ...).",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
